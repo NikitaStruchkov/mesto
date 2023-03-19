@@ -1,0 +1,7 @@
+.profile {
+  width: var(--main-width);
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

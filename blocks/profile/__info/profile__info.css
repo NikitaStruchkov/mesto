@@ -1,0 +1,10 @@
+.profile__info {
+width: 55.23%;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+row-gap: 16px;
+column-gap: 30px;
+justify-content: center;
+
+}
