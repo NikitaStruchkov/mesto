@@ -1,5 +1,4 @@
 .profile__box {
-  /* width: 336px; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;

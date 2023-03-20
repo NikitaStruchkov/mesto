@@ -1,3 +1,9 @@
 .profile__add-button {
-width: 17%;
+  width: 17%;
+}
+
+.profile__add-button:hover {
+  opacity: 0.5;
+  transition-property: 0.5s;
+  cursor: pointer;
 }
