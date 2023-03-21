@@ -1,5 +1,6 @@
 .element__like {
-  margin-right: 20px;
+  height: 19px;
+  margin: auto 20px auto 0;
 }
 
 .element__like:hover {
