@@ -20,3 +20,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 450px) {
+  .elements {
+    width: calc(100% - 19px*2);
+  }
+}

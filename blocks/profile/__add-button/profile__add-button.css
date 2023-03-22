@@ -3,17 +3,20 @@
   background-size: 20%;
   background-repeat: no-repeat;
   background-position: center;
+  padding: 0;
   border: 1px solid #fff;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
   width: 17%;
   height: 50px;
   margin: auto 0;
-
 }
 
 .profile__add-button:hover {
   opacity: 0.5;
   transition-property: 0.5s;
-  cursor: pointer;
 }
 
 @media (max-width: 900px) {
@@ -21,5 +24,11 @@
     width: 55.23%;
     background-size: 5%;
     margin-bottom: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .profile__add-button {
+    width: 100%;
   }
 }

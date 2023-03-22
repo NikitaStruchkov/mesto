@@ -14,3 +14,9 @@
     line-height: 1.063rem;
   }
 }
+
+@media (max-width: 450px) {
+  .profile__subtitle {
+   margin-top: -12px;
+  }
+}

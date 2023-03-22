@@ -5,3 +5,10 @@
   align-items: center;
   gap: 18px;
 }
+
+
+@media (max-width: 450px) {
+  .profile__box {
+    gap: 10px;
+  }
+}

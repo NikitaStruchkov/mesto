@@ -8,3 +8,8 @@
   }
 }
 
+@media (max-width: 450px) {
+  .footer {
+    width: calc(100% - 19px * 2);
+  }
+}
