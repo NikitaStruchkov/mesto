@@ -11,7 +11,12 @@
   width: 32px;
   height: 32px;
   position: absolute;
-  right: -30px;
-  top: -32px;
+  right: -37px;
+  top: -37px;
   cursor: pointer;
+}
+
+.popup__close:hover {
+  opacity: 0.5;
+  transition-property: 0.5s;
 }

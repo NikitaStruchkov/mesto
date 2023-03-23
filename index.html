@@ -26,16 +26,13 @@
         <button class="profile__add-button"></button>
       </section>
       <!-- popup -->
-      <section class="popup popup_open">
+      <section class="popup">
         <!-- добавить popup_open -->
-        <div class="popup__content">
+        <form class="popup__content">
           <h3 class="popup__head">Редактировать профиль</h3>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
-          autem voluptas dolorem, repellat quas, rerum recusandae, id laborum
-          aperiam ad fugiat accusamus ducimus mollitia. Natus numquam eum harum
-          placeat ratione?
-          <imput class="popup__title"></imput>
-          <imput class="subtitle"></imput>
+          <input type="name" class="popup__title"></input>
+          <input type="name" class="popup__subtitle"></input>
+          <button type="submit" class="popup__save">Сохранить</button>
           <button class="popup__close"></button>
         </div>
       </section>
@@ -98,5 +95,7 @@
         <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
       </footer>
     </div>
+
+    <script src="./index.js"></script>
   </body>
 </html>
