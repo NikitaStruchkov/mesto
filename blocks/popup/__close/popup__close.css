@@ -18,5 +18,14 @@
 
 .popup__close:hover {
   opacity: 0.5;
+  -webkit-transition-property: 0.5s;
+  -o-transition-property: 0.5s;
   transition-property: 0.5s;
+}
+
+@media (max-width: 550px) {
+  .popup__close {
+    right: 0;
+    top: -50px;
+  }
 }

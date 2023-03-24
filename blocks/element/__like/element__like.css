@@ -11,10 +11,13 @@
   height: 19px;
   width: 22px;
   margin: auto 20px auto 0;
+  -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
 .element__like:hover {
   opacity: 0.5;
+  -webkit-transition-property: 0.5s;
+  -o-transition-property: 0.5s;
   transition-property: 0.5s;
 }

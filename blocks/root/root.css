@@ -1,9 +1,9 @@
 .root {
-    margin: 0 auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  :root {
-    --main-width: calc(100% - 100px * 2);
-  }
+:root {
+  --main-width: calc(100% - 100px * 2);
+}

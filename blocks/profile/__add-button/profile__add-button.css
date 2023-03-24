@@ -1,5 +1,5 @@
 .profile__add-button {
-  background-image: url(/images/cross.svg);
+  background-image: url(../../../images/cross.svg);
   background-size: 20%;
   background-repeat: no-repeat;
   background-position: center;
@@ -16,6 +16,8 @@
 
 .profile__add-button:hover {
   opacity: 0.5;
+  -webkit-transition-property: 0.5s;
+  -o-transition-property: 0.5s;
   transition-property: 0.5s;
 }
 

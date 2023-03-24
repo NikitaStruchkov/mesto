@@ -1,6 +1,7 @@
 .elements {
   margin: 0 auto;
   width: 880px;
+  display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
   justify-items: center;
@@ -10,6 +11,7 @@
 @media (max-width: 900px) {
   .elements {
     width: var(--main-width);
+    -ms-grid-columns: (1fr)[2];
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -17,6 +19,7 @@
 
 @media (max-width: 784px) {
   .elements {
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
   }
 }

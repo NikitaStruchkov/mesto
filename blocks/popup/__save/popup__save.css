@@ -17,5 +17,16 @@
 
 .popup__save:hover {
   opacity: 0.5;
+  -webkit-transition-property: 0.5s;
+  -o-transition-property: 0.5s;
   transition-property: 0.5s;
+}
+
+@media (max-width: 450px) {
+  .popup__save {
+    font-size: 14px;
+    line-height: 1.063rem;
+    min-height: 46px;
+    margin: 0 22px 25px 22px;
+  }
 }

@@ -8,6 +8,9 @@
   font-size: 42px;
   line-height: 3rem;
   min-height: 39px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 @media (max-width: 900px) {
@@ -23,7 +26,6 @@
     line-height: 2.063rem;
   }
 }
-
 
 @media (max-width: 450px) {
   .profile__title {
