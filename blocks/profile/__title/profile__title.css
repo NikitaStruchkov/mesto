@@ -7,10 +7,10 @@
   font-weight: 500;
   font-size: 42px;
   line-height: 3rem;
-  min-height: 39px;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 @media (max-width: 900px) {
@@ -24,11 +24,12 @@
   .profile__title {
     font-size: 27px;
     line-height: 2.063rem;
+    text-align: center;
   }
 }
 
 @media (max-width: 450px) {
   .profile__title {
-    margin-top: 8px;
+    margin-left: 35px;
   }
 }

@@ -1,0 +1,12 @@
+.profile__text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+@media (max-width: 450px) {
+  .profile__text {
+    margin-top: 26px;
+    column-gap: 20px;
+  }
+}

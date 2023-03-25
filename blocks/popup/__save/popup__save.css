@@ -12,11 +12,12 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  margin: 0 36px 37px;
+  margin: 48px 36px 37px;
+  border-radius: 2px;
 }
 
 .popup__save:hover {
-  opacity: 0.5;
+  opacity: 0.6;
   -webkit-transition-property: 0.5s;
   -o-transition-property: 0.5s;
   transition-property: 0.5s;
@@ -24,9 +25,10 @@
 
 @media (max-width: 450px) {
   .popup__save {
+    width: calc(100% - 22px * 2);
     font-size: 14px;
     line-height: 1.063rem;
     min-height: 46px;
-    margin: 0 22px 25px 22px;
+    margin: 45px 22px 25px 22px;
   }
 }

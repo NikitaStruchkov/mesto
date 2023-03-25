@@ -6,6 +6,11 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.375rem;
+  text-overflow: ellipsis;
+  max-width: 336px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 @media (max-width: 625px) {
@@ -15,8 +20,9 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 550px) {
   .profile__subtitle {
     margin-top: -12px;
+    text-align: center;
   }
 }

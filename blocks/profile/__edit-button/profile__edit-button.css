@@ -1,5 +1,5 @@
 .profile__edit-button {
-  background-image: url(../../../images/Edit\ Button.svg);
+  background-image: url(../../../images/edit-button.svg);
   padding: 0;
   border: 1px solid #fff;
   font: inherit;
@@ -13,7 +13,7 @@
 }
 
 .profile__edit-button:hover {
-  opacity: 0.5;
+  opacity: 0.6;
   -webkit-transition-property: 0.5s;
   -o-transition-property: 0.5s;
   transition-property: 0.5s;
