@@ -3,8 +3,8 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const editPopup = document.querySelector('.popup');
 const editPopupCloseButton = editPopup.querySelector('.popup__close');
-const editPopupTitle = editPopup.querySelector('.popup__text-area_name');
-const editPopupSubtitle = editPopup.querySelector('.popup__text-area_job');
+const editPopupTitle = editPopup.querySelector('.popup__text-area_input_name');
+const editPopupSubtitle = editPopup.querySelector('.popup__text-area_input_job');
 const editPopupForm = editPopup.querySelector('.popup__content');
 
 function popupOpened() {
