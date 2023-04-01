@@ -33,3 +33,4 @@ function handleFormSubmit(event) {
 
 // добавим обработчик submit-а
 editPopupForm.addEventListener('submit', handleFormSubmit); //вызываем ранее объявленую функцию
+
