@@ -35,8 +35,7 @@
         <!-- elements -->
         <section class="elements"></section>
          <!-- popup -->
-         <div class="popup">
-          <!-- добавить popup_opened -->
+         <div class="popup">       <!-- добавить popup_opened -->
           <div class="popup__container">
             <form name="edit-profile"  class="popup__content">
               <h3 class="popup__head">Редактировать профиль</h3>
@@ -48,6 +47,18 @@
           </div>
         </div>
 
+          <!-- Форма добавления карточки -->
+        <div class="popup add-popup">       <!-- добавить popup_opened -->
+            <div class="popup__container">
+              <form name="edit-profile"  class="popup__content">
+                <h3 class="popup__head">Новое место</h3>
+                 <input class="popup__text-area popup__text-area_input_name" type="text" name="card-name" placeholder="Название">
+                 <input class="popup__text-area popup__text-area_input_job"  type="text" name="card-url" placeholder="Ссылка на картинку">
+                <button type="submit" class="popup__save">Сохранить</button>
+              </form>
+              <button type="button" class="popup__close add-closed"></button>
+            </div>
+          </div>
       </main>
       <!-- footer -->
       <footer class="footer container__footer">

@@ -34,3 +34,21 @@ function handleFormSubmit(event) {
 // добавим обработчик submit-а
 editPopupForm.addEventListener('submit', handleFormSubmit); //вызываем ранее объявленую функцию
 
+
+// --------------------------- Форма добавления карточки
+
+const addPopup = document.querySelector('.add-popup');
+const addButton = document.querySelector('.profile__add-button');
+const addPopupCloseButton = addPopup.querySelector('.add-closed');
+
+function addCardOpened() {    // функция, которая открывает попап
+addPopup.classList.add('popup_opened');
+}
+
+addButton.addEventListener('click', addCardOpened);
+
+function addCardClosed() {    // функция, которая закрывает попап
+  addPopup.classList.remove('popup_opened');
+}
+
+addPopupCloseButton.addEventListener('click', addCardClosed);
