@@ -35,28 +35,28 @@
         <!-- elements -->
         <section class="elements"></section>
          <!-- popup -->
-         <div class="popup">       <!-- добавить popup_opened -->
+         <div class="popup" id="edit-popup">       <!-- добавить popup_opened -->
           <div class="popup__container">
-            <form name="edit-profile"  class="popup__content">
+            <form name="edit-profile"  class="popup__content popup__content_type_edit">
               <h3 class="popup__head">Редактировать профиль</h3>
                <input class="popup__text-area popup__text-area_input_name" type="text" name="profile-name">
                <input class="popup__text-area popup__text-area_input_job"  type="text" name="profile-job">
               <button type="submit" class="popup__save">Сохранить</button>
             </form>
-            <button type="button" class="popup__close"></button>
+            <button type="button" class="popup__close" id="edit-btn-close"></button>
           </div>
         </div>
 
           <!-- Форма добавления карточки -->
-        <div class="popup add-popup">       <!-- добавить popup_opened -->
+        <div class="popup" id="add-popup">       <!-- добавить popup_opened -->
             <div class="popup__container">
-              <form name="edit-profile"  class="popup__content">
+              <form name="edit-profile"  class="popup__content popup__content_type_add">
                 <h3 class="popup__head">Новое место</h3>
-                 <input class="popup__text-area popup__text-area_input_name" type="text" name="card-name" placeholder="Название">
-                 <input class="popup__text-area popup__text-area_input_job"  type="text" name="card-url" placeholder="Ссылка на картинку">
+                 <input class="popup__text-area popup__text-area_card_name" type="text" name="card-name" placeholder="Название">
+                 <input class="popup__text-area popup__text-area_card_url"  type="text" name="card-url" placeholder="Ссылка на картинку">
                 <button type="submit" class="popup__save">Сохранить</button>
               </form>
-              <button type="button" class="popup__close add-closed"></button>
+              <button type="button" class="popup__close" id="add-btn-close"></button>
             </div>
           </div>
       </main>
