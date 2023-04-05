@@ -71,8 +71,10 @@ const handleCardSubmit = (event) => {
     name,
     link
   };
-  renderCardElement(createCardElement(cardData));    // еще раз повторить последовательность от и до
+  renderCardElement(createCardElement(cardData));
   closePopup(addPopup);
 }
 
 addPopupForm.addEventListener('submit', handleCardSubmit);
+
+
