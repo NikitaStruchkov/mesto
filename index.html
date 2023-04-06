@@ -61,11 +61,11 @@
           </div>
 
           <!-- Открытие попапа с картинкой -->
-          <div class="popup popup_opened" id="">       <!-- добавить popup_opened -->
-             <div class="popup__container">   <!--нужен?? -->
-              <img src="" alt="" class="popup__image">
-              <p class="popup__description"></p>
-              <button type="button" class="popup__close" id=""></button>
+          <div class="popup" id="img-popup">       <!-- добавить popup_opened -->
+             <div class="popup__img-container">
+              <img src="./images/elbrus.jpg" alt="" class="popup__image">
+               <p class="popup__description"></p>
+              <button type="button" class="popup__close" id="img-btn-close"></button>
             </div>
           </div>
       </main>
@@ -91,8 +91,8 @@
     </template>
 
     <!-- подключаю скрипт -->
-    <script src="./script/index.js"></script>
-    <script src="./script/cards.js"></script>
+    <script src="./script/index.js" type="module"></script>
+    <script src="./script/cards.js" type="module"></script>
 
 
   </body>
