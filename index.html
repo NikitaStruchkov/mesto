@@ -35,7 +35,7 @@
         <!-- elements -->
         <section class="elements"></section>
          <!-- Редактирование профиля -->
-         <div class="popup" id="edit-popup">       <!-- добавить popup_opened -->
+         <div class="popup popup_type_edit-form">       <!-- добавить popup_opened -->
           <div class="popup__container">
             <form name="edit-profile"  class="popup__content popup__content_type_edit">
               <h3 class="popup__head">Редактировать профиль</h3>
@@ -43,29 +43,29 @@
                <input class="popup__text-area popup__text-area_input_job"  type="text" name="profile-job">
               <button type="submit" class="popup__save">Сохранить</button>
             </form>
-            <button type="button" class="popup__close" id="edit-btn-close"></button>
+            <button type="button" class="popup__close"></button>
           </div>
         </div>
 
           <!-- Форма добавления карточки -->
-        <div class="popup" id="add-popup">       <!-- добавить popup_opened -->
+        <div class="popup popup_type_add-form">       <!-- добавить popup_opened -->
             <div class="popup__container">
               <form name="edit-profile"  class="popup__content popup__content_type_add">
                 <h3 class="popup__head">Новое место</h3>
                  <input class="popup__text-area popup__text-area_card_name" type="text" name="card-name" placeholder="Название">
                  <input class="popup__text-area popup__text-area_card_url"  type="text" name="card-url" placeholder="Ссылка на картинку">
-                <button type="submit" class="popup__save">Сохранить</button>
+                <button type="submit" class="popup__save">Создать</button>
               </form>
-              <button type="button" class="popup__close" id="add-btn-close"></button>
+              <button type="button" class="popup__close"></button>
             </div>
           </div>
 
           <!-- Открытие попапа с картинкой -->
-          <div class="popup" id="img-popup">       <!-- добавить popup_opened -->
+          <div class="popup popup_type_full-img">       <!-- добавить popup_opened -->
              <div class="popup__img-container">
               <img src="./images/elbrus.jpg" alt="" class="popup__image">
                <p class="popup__description"></p>
-              <button type="button" class="popup__close" id="img-btn-close"></button>
+              <button type="button" class="popup__close"></button>
             </div>
           </div>
       </main>
@@ -77,10 +77,10 @@
 
     <template id="card-template">
       <div class="element">
-        <button class="element__delete"></button>
+        <button type="button" class="element__delete"></button>
         <img
-          src="./images/karachaevsk.jpg"
-          alt="Карачаевск"
+          src
+          alt
           class="element__photo"
         >
         <div class="element__group">
@@ -93,7 +93,6 @@
     <!-- подключаю скрипт -->
     <script src="./script/index.js" type="module"></script>
     <script src="./script/cards.js" type="module"></script>
-
 
   </body>
 </html>

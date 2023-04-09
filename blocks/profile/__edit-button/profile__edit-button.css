@@ -15,9 +15,9 @@
 
 .profile__edit-button:hover {
   opacity: 0.6;
-  -webkit-transition-property: 0.5s;
-  -o-transition-property: 0.5s;
-  transition-property: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
 
 @media (max-width: 625px) {

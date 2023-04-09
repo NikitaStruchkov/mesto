@@ -17,7 +17,7 @@
 
 .element__like:hover {
   opacity: 0.5;
-  -webkit-transition-property: 0.5s;
-  -o-transition-property: 0.5s;
-  transition-property: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }

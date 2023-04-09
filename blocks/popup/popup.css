@@ -16,5 +16,8 @@
   display: flex;
   visibility: hidden;
   opacity: 0;
+  -webkit-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  -o-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
   background-color: rgba(0, 0, 0, 0.5);
 }

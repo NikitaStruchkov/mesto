@@ -5,14 +5,10 @@
   flex-direction: row;
   column-gap: 30px;
   align-items: center;
-
 }
 
 @media (max-width: 900px) {
   .profile__info {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
     flex-direction: column;
   }
 }
