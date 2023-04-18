@@ -1,0 +1,14 @@
+.popup__error-text {
+  color: #ff0000;
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 0.938rem;
+  padding: 0;
+  display: flex;
+  width: 83.26%;
+  margin-top: 5px;
+  margin-left: 36px;
+  /* сверху | справа | снизу | слева */
+}

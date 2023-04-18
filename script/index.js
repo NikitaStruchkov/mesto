@@ -105,17 +105,34 @@ function handleEditProfileFormSubmit(event) {
 
 // добавим обработчик submit-а
 editPopupForm.addEventListener('submit', handleEditProfileFormSubmit); //вызываем ранее объявленую функцию
-//                                 ВАЛИДАЦИЯ 1ОГО ПОПАПА
+//////////////////////////// ВАЛИДАЦИЯ 1ОГО ПОПАПА///////////////////////////////////////
+function checkInputValidity(input) { 
+  const errorElement = editPopup.querySelector(`#error-${input.id}`);  // функция проверки валидности инпутов
+ 
+  if (input.checkValidity()) {
+    input.classList.remove('popup__text-area_invalid');  // valid
+    errorElement.textContent = '';
+  
+  } else {
+    input.classList.add('popup__text-area_invalid');    // invalid
+  
+  errorElement.textContent = input.validationMessage;
+  }
+}
+
+function enableValidation() {
+
 const editPopupInputs = editPopup.querySelectorAll('.popup__text-area'); //псевдомассив
 const editPopupInputsArray = Array.from(editPopupInputs);  // массив
 editPopupInputsArray.forEach(function (input) {
-  input.addEventListener('input', function(event) {
-    console.log(event.target.value);
-  })
+  input.addEventListener('input', () => {
+    checkInputValidity(input)
+  });
 })
-  
 
+}
 
+enableValidation();
 
 
 // --------------------------- Форма добавления карточки

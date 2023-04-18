@@ -39,8 +39,10 @@
           <div class="popup__container">
             <form name="edit-profile"  class="popup__content popup__content_type_edit" novalidate>
               <h3 class="popup__head">Редактировать профиль</h3>
-               <input class="popup__text-area popup__text-area_input_name" type="text" name="profile-name" minlength="2" maxlength="40" required>
-               <input class="popup__text-area popup__text-area_input_job"  type="text" name="profile-job" minlength="2" maxlength="200" required>
+               <input id="profile-name" class="popup__text-area popup__text-area_input_name" type="text" name="profile-name" minlength="2" maxlength="40" required>
+               <span id="error-profile-name" class="popup__error-text"></span>
+               <input id="profile-job" class="popup__text-area popup__text-area_input_job"  type="text" name="profile-job" minlength="2" maxlength="200" required>
+               <span id="error-profile-job" class="popup__error-text"></span>
               <button type="submit" class="popup__save">Сохранить</button>
             </form>
             <button type="button" class="popup__close"></button>

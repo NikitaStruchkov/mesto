@@ -37,6 +37,8 @@
 @import url(../blocks/popup/__img-container/popup__img-container.css);
 @import url(../blocks/popup/__description/popup__description.css);
 @import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__text-area/_invalid/popup__text-area_invalid.css);
+@import url(../blocks/popup/__error-text/popup__error-text.css);
 
 /* elements */
 @import url(../blocks/elements/elements.css);
