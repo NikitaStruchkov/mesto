@@ -105,6 +105,18 @@ function handleEditProfileFormSubmit(event) {
 
 // добавим обработчик submit-а
 editPopupForm.addEventListener('submit', handleEditProfileFormSubmit); //вызываем ранее объявленую функцию
+//                                 ВАЛИДАЦИЯ 1ОГО ПОПАПА
+const editPopupInputs = editPopup.querySelectorAll('.popup__text-area'); //псевдомассив
+const editPopupInputsArray = Array.from(editPopupInputs);  // массив
+editPopupInputsArray.forEach(function (input) {
+  input.addEventListener('input', function(event) {
+    console.log(event.target.value);
+  })
+})
+  
+
+
+
 
 // --------------------------- Форма добавления карточки
 const addButton = document.querySelector('.profile__add-button');
@@ -141,3 +153,6 @@ const handleCardSubmit = (event) => {
 };
 
 addPopupForm.addEventListener('submit', handleCardSubmit);
+
+
+export  { editPopupForm };

@@ -37,10 +37,10 @@
          <!-- Редактирование профиля -->
          <div class="popup popup_type_edit-form">       <!-- добавить popup_opened -->
           <div class="popup__container">
-            <form name="edit-profile"  class="popup__content popup__content_type_edit">
+            <form name="edit-profile"  class="popup__content popup__content_type_edit" novalidate>
               <h3 class="popup__head">Редактировать профиль</h3>
-               <input class="popup__text-area popup__text-area_input_name" type="text" name="profile-name">
-               <input class="popup__text-area popup__text-area_input_job"  type="text" name="profile-job">
+               <input class="popup__text-area popup__text-area_input_name" type="text" name="profile-name" minlength="2" maxlength="40" required>
+               <input class="popup__text-area popup__text-area_input_job"  type="text" name="profile-job" minlength="2" maxlength="200" required>
               <button type="submit" class="popup__save">Сохранить</button>
             </form>
             <button type="button" class="popup__close"></button>
@@ -93,6 +93,7 @@
     <!-- подключаю скрипт -->
     <script src="./script/index.js" type="module"></script>
     <script src="./script/cards.js" type="module"></script>
+    <script src="./script/validation.js" type="module"></script>
 
   </body>
 </html>
