@@ -106,27 +106,56 @@ function handleEditProfileFormSubmit(event) {
 // добавим обработчик submit-а
 editPopupForm.addEventListener('submit', handleEditProfileFormSubmit); //вызываем ранее объявленую функцию
 //////////////////////////// ВАЛИДАЦИЯ 1ОГО ПОПАПА///////////////////////////////////////
+function setInputValidState(input, errorElement) {   // функция валидности
+  input.classList.remove('popup__text-area_invalid');  // valid
+  errorElement.textContent = '';
+}
+function setInputInvalidState(input, errorElement) {  // функция невалидности 
+  input.classList.add('popup__text-area_invalid');    // invalid
+  errorElement.textContent = input.validationMessage;
+}
+
+
 function checkInputValidity(input) { 
   const errorElement = editPopup.querySelector(`#error-${input.id}`);  // функция проверки валидности инпутов
- 
+
   if (input.checkValidity()) {
-    input.classList.remove('popup__text-area_invalid');  // valid
-    errorElement.textContent = '';
-  
+    setInputValidState(input, errorElement);
   } else {
-    input.classList.add('popup__text-area_invalid');    // invalid
-  
-  errorElement.textContent = input.validationMessage;
+   setInputInvalidState(input, errorElement);
   }
 }
+
+function disableSubmitButton(button) {  // функця, которая блокирует кнопку submit при невалидных инпутах 
+  button.setAttribute('disabled', '');
+  button.classList.add('popup__save_disabled');
+}
+
+function enableSubmitButton(button) {  // функця, которая разблокирует кнопку submit когда инпуты валидены 
+  button.removeAttribute('disabled');
+  button.classList.remove('popup__save_disabled');
+  
+}
+
+function toggleButtonValidity(editPopup) {  // функця, которая проверяет форму на валидность
+  const editPopupSaveButton = editPopup.querySelector('.popup__save_type_edit');
+  
+  if (editPopupForm.checkValidity()) {
+    enableSubmitButton(editPopupSaveButton);
+  } else {
+    disableSubmitButton(editPopupSaveButton);
+  }
+}
+
 
 function enableValidation() {
 
 const editPopupInputs = editPopup.querySelectorAll('.popup__text-area'); //псевдомассив
 const editPopupInputsArray = Array.from(editPopupInputs);  // массив
-editPopupInputsArray.forEach(function (input) {
+editPopupInputsArray.forEach(function (input) {   // функция, которая проверяет валидность при каждом событии 'input'
   input.addEventListener('input', () => {
     checkInputValidity(input)
+    toggleButtonValidity(editPopup);
   });
 })
 

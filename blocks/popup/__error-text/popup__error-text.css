@@ -10,5 +10,10 @@
   width: 83.26%;
   margin-top: 5px;
   margin-left: 36px;
-  /* сверху | справа | снизу | слева */
+  margin-bottom: 13px;
+  min-height: 12px;
+}
+
+.popup__error-text:last-of-type {
+  margin-bottom: 0;
 }
