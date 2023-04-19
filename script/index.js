@@ -105,6 +105,14 @@ function handleEditProfileFormSubmit(event) {
 
 // добавим обработчик submit-а
 editPopupForm.addEventListener('submit', handleEditProfileFormSubmit); //вызываем ранее объявленую функцию
+
+
+
+
+
+
+
+
 //////////////////////////// ВАЛИДАЦИЯ 1ОГО ПОПАПА///////////////////////////////////////
 function setInputValidState(input, errorElement) {   // функция валидности
   input.classList.remove('popup__text-area_invalid');  // valid
@@ -147,21 +155,39 @@ function toggleButtonValidity(editPopup) {  // функця, которая пр
   }
 }
 
+function setEventListeners() {
+  const editPopupInputs = editPopup.querySelectorAll('.popup__text-area'); //псевдомассив
+  const editPopupInputsArray = Array.from(editPopupInputs);  // массив
+  editPopupInputsArray.forEach(function (input) {   // функция, которая проверяет валидность при каждом событии 'input'
+    input.addEventListener('input', () => {
+      checkInputValidity(input)
+      toggleButtonValidity(editPopup);
+    });
+  })
+}
+
 
 function enableValidation() {
-
-const editPopupInputs = editPopup.querySelectorAll('.popup__text-area'); //псевдомассив
-const editPopupInputsArray = Array.from(editPopupInputs);  // массив
-editPopupInputsArray.forEach(function (input) {   // функция, которая проверяет валидность при каждом событии 'input'
-  input.addEventListener('input', () => {
-    checkInputValidity(input)
-    toggleButtonValidity(editPopup);
+const formList = document.querySelectorAll('.popup__content');  //псевдомассив
+const formListArray = Array.from(formList);  // массив
+formListArray.forEach(function (form) { 
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    form.reset();
   });
 })
 
+  setEventListeners();
 }
 
 enableValidation();
+
+
+
+
+
+
+
 
 
 // --------------------------- Форма добавления карточки
