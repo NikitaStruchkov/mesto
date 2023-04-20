@@ -52,7 +52,7 @@
           <!-- Форма добавления карточки -->
         <div class="popup popup_type_add-form">       <!-- добавить popup_opened -->
             <div class="popup__container">
-              <form name="edit-profile"  class="popup__content popup__content_type_add">
+              <form name="edit-profile"  class="popup__content popup__content_type_add" novalidate>
                 <h3 class="popup__head">Новое место</h3>
                  <input class="popup__text-area popup__text-area_card_name" type="text" name="card-name" placeholder="Название">
                  <input class="popup__text-area popup__text-area_card_url"  type="text" name="card-url" placeholder="Ссылка на картинку">
@@ -92,7 +92,7 @@
       </div>
     </template>
 
-    <!-- подключаю скрипт -->
+    <!-- подключаю скрипты -->
     <script src="./script/index.js" type="module"></script>
     <script src="./script/cards.js" type="module"></script>
     <script src="./script/validation.js" type="module"></script>
