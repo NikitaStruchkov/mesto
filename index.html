@@ -34,7 +34,7 @@
         </section>
         <!-- elements -->
         <section class="elements"></section>
-         <!-- Редактирование профиля -->
+         <!-- форма «Редактировать профиль» -->
          <div class="popup popup_type_edit-form">       <!-- добавить popup_opened -->
           <div class="popup__container">
             <form name="edit-profile"  class="popup__content popup__content_type_edit" novalidate>
@@ -49,14 +49,16 @@
           </div>
         </div>
 
-          <!-- Форма добавления карточки -->
+          <!-- форма «Новое место» -->
         <div class="popup popup_type_add-form">       <!-- добавить popup_opened -->
             <div class="popup__container">
-              <form name="edit-profile"  class="popup__content popup__content_type_add" novalidate>
+              <form name="add-profile"  class="popup__content popup__content_type_add" novalidate>
                 <h3 class="popup__head">Новое место</h3>
-                 <input class="popup__text-area popup__text-area_card_name" type="text" name="card-name" placeholder="Название">
-                 <input class="popup__text-area popup__text-area_card_url"  type="text" name="card-url" placeholder="Ссылка на картинку">
-                <button type="submit" class="popup__save">Создать</button>
+                 <input id="card-name" class="popup__text-area popup__text-area_card_name" type="text" name="card-name" placeholder="Название" minlength="2" maxlength="30" required>
+                 <span id="error-card-name" class="popup__error-text"></span>
+                 <input id="card-url" class="popup__text-area popup__text-area_card_url"  type="url" name="card-url" placeholder="Ссылка на картинку" required>
+                 <span id="error-card-url" class="popup__error-text"></span>
+                <button type="submit" class="popup__save popup__save_type_add popup__save_disabled" disabled>Создать</button>
               </form>
               <button type="button" class="popup__close"></button>
             </div>

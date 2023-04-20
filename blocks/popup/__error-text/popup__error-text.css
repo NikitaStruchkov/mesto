@@ -17,3 +17,9 @@
 .popup__error-text:last-of-type {
   margin-bottom: 0;
 }
+
+@media (max-width: 450px) {
+  .popup__error-text {
+    margin-left: 22px;
+  }
+}

@@ -106,10 +106,6 @@ function handleEditProfileFormSubmit(event) {
 // добавим обработчик submit-а
 editPopupForm.addEventListener('submit', handleEditProfileFormSubmit); //вызываем ранее объявленую функцию
 
-
-
-
-
 // --------------------------- Форма добавления карточки
 const addButton = document.querySelector('.profile__add-button');
 const addPopup = document.querySelector('.popup_type_add-form');
