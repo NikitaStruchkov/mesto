@@ -1,103 +1,107 @@
 <!DOCTYPE html>
 <html class="html" lang="Ru">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Место</title>
-    <link rel="stylesheet" href="pages/index.css">
-  </head>
 
-  <body class="root">
-    <div class="container">
-      <!-- header -->
-      <header class="header container__header">
-        <img src="./images/logo.svg" alt="Логотип" class="header__logo">
-      </header>
-      <main>
-        <!-- profile -->
-        <section class="profile container__profile">
-          <div class="profile__info">
-            <img
-              src="./images/avatar.jpg"
-              alt="Аватар"
-              class="profile__avatar"
-            >
-            <div class="profile__text">
-              <div class="profile__box">
-                <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <button aria-label="редактировать" type="button" class="profile__edit-button"></button>
-              </div>
-              <p class="profile__subtitle">Исследователь океана</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+  <link rel="stylesheet" href="pages/index.css">
+</head>
+
+<body class="root">
+  <div class="container">
+    <!-- header -->
+    <header class="header container__header">
+      <img src="./images/logo.svg" alt="Логотип" class="header__logo">
+    </header>
+    <main>
+      <!-- profile -->
+      <section class="profile container__profile">
+        <div class="profile__info">
+          <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
+          <div class="profile__text">
+            <div class="profile__box">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button aria-label="редактировать" type="button" class="profile__edit-button"></button>
             </div>
-          </div>
-          <button type="button" class="profile__add-button"></button>
-        </section>
-        <!-- elements -->
-        <section class="elements"></section>
-         <!-- форма «Редактировать профиль» -->
-         <div class="popup popup_type_edit-form">       <!-- добавить popup_opened -->
-          <div class="popup__container">
-            <form name="edit-profile"  class="popup__content popup__content_type_edit" novalidate>
-              <h3 class="popup__head">Редактировать профиль</h3>
-               <input id="profile-name" class="popup__text-area popup__text-area_input_name" type="text" name="profile-name" minlength="2" maxlength="40" required>
-               <span id="error-profile-name" class="popup__error-text"></span>
-               <input id="profile-job" class="popup__text-area popup__text-area_input_job"  type="text" name="profile-job" minlength="2" maxlength="200" required>
-               <span id="error-profile-job" class="popup__error-text"></span>
-              <button type="submit" class="popup__save popup__save_type_edit">Сохранить</button>
-            </form>
-            <button type="button" class="popup__close"></button>
+            <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-
-          <!-- форма «Новое место» -->
-        <div class="popup popup_type_add-form">       <!-- добавить popup_opened -->
-            <div class="popup__container">
-              <form name="add-profile"  class="popup__content popup__content_type_add" novalidate>
-                <h3 class="popup__head">Новое место</h3>
-                 <input id="card-name" class="popup__text-area popup__text-area_card_name" type="text" name="card-name" placeholder="Название" minlength="2" maxlength="30" required>
-                 <span id="error-card-name" class="popup__error-text"></span>
-                 <input id="card-url" class="popup__text-area popup__text-area_card_url"  type="url" name="card-url" placeholder="Ссылка на картинку" required>
-                 <span id="error-card-url" class="popup__error-text"></span>
-                <button type="submit" class="popup__save popup__save_type_add popup__save_disabled" disabled>Создать</button>
-              </form>
-              <button type="button" class="popup__close"></button>
-            </div>
-          </div>
-
-          <!-- Открытие попапа с картинкой -->
-          <div class="popup popup_type_full-img">       <!-- добавить popup_opened -->
-             <div class="popup__img-container">
-              <img src="./images/elbrus.jpg" alt="" class="popup__image">
-               <p class="popup__description"></p>
-              <button type="button" class="popup__close"></button>
-            </div>
-          </div>
-      </main>
-      <!-- footer -->
-      <footer class="footer container__footer">
-        <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
-      </footer>
-    </div>
-
-    <template id="card-template">
-      <div class="element">
-        <button type="button" class="element__delete"></button>
-        <img
-          src="./"
-          alt=""
-          class="element__photo"
-        >
-        <div class="element__group">
-          <h2 class="element__name">Карачаевск</h2>
-          <button type="button" class="element__like"></button>
+        <button type="button" class="profile__add-button"></button>
+      </section>
+      <!-- elements -->
+      <section aria-label="карточки" class="elements"></section>
+      <!-- форма «Редактировать профиль» -->
+      <div class="popup popup_type_edit-form">
+        <!-- добавить popup_opened -->
+        <div class="popup__container">
+          <form name="edit-profile" class="popup__content popup__content_type_edit" novalidate>
+            <h3 class="popup__head">Редактировать профиль</h3>
+            <input id="profile-name" class="popup__text-area popup__text-area_input_name" type="text"
+              name="profile-name" minlength="2" maxlength="40" required>
+            <span id="error-profile-name" class="popup__error-text"></span>
+            <input id="profile-job" class="popup__text-area popup__text-area_input_job" type="text" name="profile-job"
+              minlength="2" maxlength="200" required>
+            <span id="error-profile-job" class="popup__error-text"></span>
+            <button type="submit" class="popup__save popup__save_type_edit">
+              Сохранить
+            </button>
+          </form>
+          <button type="button" class="popup__close"></button>
         </div>
       </div>
-    </template>
 
-    <!-- подключаю скрипты -->
-    <script src="./script/index.js" type="module"></script>
-    <script src="./script/cards.js" type="module"></script>
-    <script src="./script/validate.js" type="module"></script>
+      <!-- форма «Новое место» -->
+      <div class="popup popup_type_add-form">
+        <!-- добавить popup_opened -->
+        <div class="popup__container">
+          <form name="add-profile" class="popup__content popup__content_type_add" novalidate>
+            <h3 class="popup__head">Новое место</h3>
+            <input id="card-name" class="popup__text-area popup__text-area_card_name" type="text" name="card-name"
+              placeholder="Название" minlength="2" maxlength="30" required>
+            <span id="error-card-name" class="popup__error-text"></span>
+            <input id="card-url" class="popup__text-area popup__text-area_card_url" type="url" name="card-url"
+              placeholder="Ссылка на картинку" required>
+            <span id="error-card-url" class="popup__error-text"></span>
+            <button type="submit" class="popup__save popup__save_type_add popup__save_disabled" disabled>
+              Создать
+            </button>
+          </form>
+          <button type="button" class="popup__close"></button>
+        </div>
+      </div>
 
-  </body>
+      <!-- Открытие попапа с картинкой -->
+      <div class="popup popup_type_full-img">
+        <!-- добавить popup_opened -->
+        <div class="popup__img-container">
+          <img src="./images/elbrus.jpg" alt="" class="popup__image">
+          <p class="popup__description"></p>
+          <button type="button" class="popup__close"></button>
+        </div>
+      </div>
+    </main>
+    <!-- footer -->
+    <footer class="footer container__footer">
+      <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+    </footer>
+  </div>
+
+  <template id="card-template">
+    <div class="element">
+      <button type="button" class="element__delete"></button>
+      <img src="./" alt="" class="element__photo">
+      <div class="element__group">
+        <h2 class="element__name">Карачаевск</h2>
+        <button type="button" class="element__like"></button>
+      </div>
+    </div>
+  </template>
+
+  <!-- подключаю скрипты -->
+  <script src="./script/index.js" type="module"></script>
+  <script src="./script/cards.js" type="module"></script>
+  <script src="./script/validate.js" type="module"></script>
+</body>
+
 </html>
