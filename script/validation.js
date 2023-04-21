@@ -1,8 +1,5 @@
 // ----------------------------- Валидация всех форм ----------------------------------
 
-const popupSubmitButton = document.querySelectorAll('.popup__save');
-const addPopupSubmitButton = document.querySelector('.popup__save_type_add');
-
 function setInputValidState(config, input, errorElement) { // функция, которая стирает у input класс c _invalid
     input.classList.remove(config.inputErrorClass); // valid
     errorElement.textContent = '';  // удялает содержимое span 
@@ -22,25 +19,25 @@ function setInputValidState(config, input, errorElement) { // функция, к
     }
   }
   
-  function toggleButtonValidity(form) {  // функция, которая меняет отображение кнопки submit 
-  popupSubmitButton.forEach(function(button) {
-    disableButton(addPopupSubmitButton);
-    if (form.checkValidity()) {  // 
-          enableButton(button);
-        } else {
-          disableButton(button);
-        }
-   });
-  }
+
+function toggleButtonValidity(config, form) {  // функция, которая меняет отображение кнопки submit 
+  const submitButton = form.querySelector(config.submitButtonSelector)    // -- '.popup__save'
+      if (form.checkValidity()) {    // если форма валидная 
+            enableButton(config, submitButton);  // включает кнопку 
+          } else {   
+            disableButton(config, submitButton);
+          }
+    }
+    
   
-  function disableButton(button) {  // функция неактивной кнопки 
-    button.classList.add('popup__save_disabled');  // добавляет класс с _disabled
+  function disableButton(config, button) {  // функция неактивной кнопки 
+    button.classList.add(config.inactiveButtonClass);  // добавляет класс с _disabled   -- 'popup__save_disabled'
     button.setAttribute('disabled', true);  // блокирует отправку 
   }
   
-  function enableButton(button) {  // функция активной кнопки 
+  function enableButton(config, button) {  // функция активной кнопки 
     button.removeAttribute('disabled'); // убирает класс с _disabled
-    button.classList.remove('popup__save_disabled'); // активирует кнопку 
+    button.classList.remove(config.inactiveButtonClass); // активирует кнопку -- 'popup__save_disabled'
   }
   
   
@@ -49,12 +46,12 @@ function setInputValidState(config, input, errorElement) { // функция, к
     inputList.forEach((input) => {
       input.addEventListener('input', function () {
         checkInputValidity(config, form, input);
-        toggleButtonValidity(form);
+        toggleButtonValidity(config, form);
       });
     });
   };
   
-  const enableValidation = (config) => {
+  function enableValidation(config)  {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
     formList.forEach((form) => {
       form.addEventListener('submit', function (event) {
