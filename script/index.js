@@ -76,6 +76,7 @@ initialCards.forEach((card) => {
 const openPopup = (popup) => {
   // функция, которая открывает popup-ы
   popup.classList.add('popup_opened');
+  closePopupByOverlayClick(popup);
 };
 
 const closePopup = (popup) => {
@@ -83,6 +84,18 @@ const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
 };
 
+
+// ---------------------- 3. Закрытие попапа кликом на оверлей -------------------
+
+function closePopupByOverlayClick(popup) {   
+  popup.addEventListener("click", (evt) => {
+  if (evt.currentTarget === evt.target) {  // evt.currentTarget — элемент, где сработал обработчик;
+    // evt.target — элемент, где возникло событие.
+    closePopup(popup)
+    }
+  });
+}
+//--------------------------------------------------------------------------------
 editButton.addEventListener('click', () => {
   openPopup(editPopup);
   editPopupTitle.value = profileTitle.textContent; // значение поля по умолчанию
