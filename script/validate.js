@@ -57,12 +57,14 @@ function setEventListeners (config, form) {
   })
 }
 
-function enableValidation (config) {  // включение валидации всех форм
+function enableValidation (config) {
+  // включение валидации всех форм
   const formList = Array.from(document.querySelectorAll(config.formSelector))
   formList.forEach(form => {
     form.addEventListener('submit', function (event) {
       event.preventDefault() // отменяет стандартную отправку формы.
       form.reset()
+      toggleButtonValidity(config, form) // деактивиует кнопку сабмита после очередного добавления новой карточки
     })
 
     setEventListeners(config, form)
@@ -77,3 +79,7 @@ enableValidation({
   inputErrorClass: 'popup__text-area_invalid',
   errorClass: 'popup__error-text'
 })
+
+function triggerFormValidation (form) {
+  toggleButtonValidity()
+}

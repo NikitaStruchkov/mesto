@@ -4,13 +4,15 @@ const editButton = document.querySelector('.profile__edit-button')
 const profileTitle = document.querySelector('.profile__title')
 const profileSubtitle = document.querySelector('.profile__subtitle')
 const editPopup = document.querySelector('.popup_type_edit-form')
-const editPopupCloseButton = editPopup.querySelector('.popup__close')
 const editPopupTitle = editPopup.querySelector('.popup__text-area_input_name')
 const editPopupSubtitle = editPopup.querySelector('.popup__text-area_input_job')
 const editPopupForm = editPopup.querySelector('.popup__content_type_edit')
 const cardTemplate = document.getElementById('card-template')
 const cardSection = document.querySelector('.elements') // сюда функция renderCardElement будет вставлять карточку
 const card = cardTemplate.content.querySelector('.element')
+const imgPopup = document.querySelector('.popup_type_full-img')
+const fullImagePopup = imgPopup.querySelector('.popup__image')
+const descriptionImgPopup = imgPopup.querySelector('.popup__description')
 
 // создаем функцию, которая на основе данных создает элемент
 const createCardElement = cardData => {
@@ -44,20 +46,12 @@ const createCardElement = cardData => {
   deleteButton.addEventListener('click', handleCardDelete)
 
   // ------------------------- Открытие попапа с картинкой ------------------
-  const imgPopup = document.querySelector('.popup_type_full-img')
-  const imgPopupCloseButton = imgPopup.querySelector('.popup__close')
-  const fullImagePopup = imgPopup.querySelector('.popup__image')
-  const descriptionImgPopup = imgPopup.querySelector('.popup__description')
 
   cardPhoto.addEventListener('click', () => {
     openPopup(imgPopup)
     descriptionImgPopup.textContent = cardData.name
     fullImagePopup.src = cardData.link
     fullImagePopup.alt = cardData.name
-  })
-
-  imgPopupCloseButton.addEventListener('click', () => {
-    closePopup(imgPopup)
   })
 
   return cardElement
@@ -76,34 +70,39 @@ initialCards.forEach(card => {
 const openPopup = popup => {
   // функция, которая открывает popup-ы
   popup.classList.add('popup_opened')
-  closePopupByOverlayClick(popup)
-  closePopupByPressingEsc(popup)
+  document.addEventListener('keydown', closePopupByPressingEsc) // добавляет слушатель закрытия попапа нажатием на Esc
 }
 
 const closePopup = popup => {
   // функция, которая закрывает popup-ы
   popup.classList.remove('popup_opened')
+  document.removeEventListener('keydown', closePopupByPressingEsc) // удялет слушатель закрытия попапа нажатием на Esc
 }
 
 // ---------------------- 3. Закрытие попапа кликом на оверлей -------------------
 
-function closePopupByOverlayClick (popup) {
-  popup.addEventListener('click', evt => {
-    if (evt.currentTarget === evt.target) {
-      // evt.currentTarget — элемент, где сработал обработчик;
-      // evt.target — элемент, где возникло событие.
+const popups = document.querySelectorAll('.popup') // все попапы
+
+// объединияем  обработчики оверлея и крестиков:
+popups.forEach(popup => {
+  popup.addEventListener('mousedown', evt => {
+    if (evt.target.classList.contains('popup_opened')) {
+      // Метод contains позволяет проверить, содержит ли один элемент внутри себя другой.
+      closePopup(popup)
+    }
+    if (evt.target.classList.contains('popup__close')) {
       closePopup(popup)
     }
   })
-}
+})
+
 // ---------------------- 4. Закрытие попапа нажатием на Esc -------------------
 
-function closePopupByPressingEsc (popup) {
-  document.addEventListener('keydown', evt => {
-    if (evt.code == 'Escape') {
-      closePopup(popup)
-    }
-  })
+function closePopupByPressingEsc (evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened') // находит открытый попап
+    closePopup(openedPopup) // закрывает попап с помощью функции closePopup
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -112,10 +111,6 @@ editButton.addEventListener('click', () => {
   openPopup(editPopup)
   editPopupTitle.value = profileTitle.textContent // значение поля по умолчанию
   editPopupSubtitle.value = profileSubtitle.textContent //значение поля по умолчанию
-})
-
-editPopupCloseButton.addEventListener('click', () => {
-  closePopup(editPopup)
 })
 
 function handleEditProfileFormSubmit (event) {
@@ -134,14 +129,9 @@ editPopupForm.addEventListener('submit', handleEditProfileFormSubmit) //вызы
 // ---------------------- Форма добавления карточки -------------------
 const addButton = document.querySelector('.profile__add-button')
 const addPopup = document.querySelector('.popup_type_add-form')
-const addPopupCloseButton = addPopup.querySelector('.popup__close')
 
 addButton.addEventListener('click', () => {
   openPopup(addPopup)
-})
-
-addPopupCloseButton.addEventListener('click', () => {
-  closePopup(addPopup)
 })
 
 // --------------------------- Добавление карточки ---------------------
