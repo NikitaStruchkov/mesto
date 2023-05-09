@@ -83,3 +83,9 @@ enableValidation({
 function triggerFormValidation (form) {
   toggleButtonValidity()
 }
+
+
+class FormValidator {
+
+  constructor(config)
+}
