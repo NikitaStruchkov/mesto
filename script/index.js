@@ -1,5 +1,6 @@
 import { initialCards } from './cards.js'
 import Card from './Card.js'
+import { FormValidator, config } from './FormValidator.js'
 
 const editButton = document.querySelector('.profile__edit-button')
 const profileTitle = document.querySelector('.profile__title')
@@ -8,9 +9,7 @@ const editPopup = document.querySelector('.popup_type_edit-form')
 const editPopupTitle = editPopup.querySelector('.popup__text-area_input_name')
 const editPopupSubtitle = editPopup.querySelector('.popup__text-area_input_job')
 const editPopupForm = editPopup.querySelector('.popup__content_type_edit')
-const cardTemplate = document.getElementById('card-template')
-const cardSection = document.querySelector('.elements') // сюда функция renderCardElement будет вставлять карточку
-// const card = cardTemplate.content.querySelector('.element')
+const cardSection = document.querySelector('.elements')
 const imgPopup = document.querySelector('.popup_type_full-img')
 const fullImagePopup = imgPopup.querySelector('.popup__image')
 const descriptionImgPopup = imgPopup.querySelector('.popup__description')
@@ -126,71 +125,13 @@ function handleCardSubmit (event) {
 
 addPopupForm.addEventListener('submit', handleCardSubmit)
 
+// ------------------------------ валидация -----------------------------------------
+
+const editPopupFormValidator = new FormValidator(config, editPopupForm) // экземпляр класса
+const addPopupFormValidator = new FormValidator(config, addPopupForm) // экземпляр класса
+
+editPopupFormValidator.enableValidation(config)
+addPopupFormValidator.enableValidation(config)
+
 // ---------------------- export -------------------
 export { editPopupForm }
-
-// const handleCardSubmit = event => {
-//   event.preventDefault() // Эта строчка отменяет стандартную отправку формы.
-//   const name = nameInput.value
-//   const link = urlInput.value
-//   const cardData = {
-//     name,
-//     link
-//   }
-//   const renderNewCardElement = (cardSection, cardData) => {
-//     const card = new Card(cardData, '.card-template', '.card-template_type_default', openZoomedCardPhoto); //создаём экземпляр карточки
-//     const cardElement = card.generateCard(); //создаём карточку и возвращаем её на страницу
-//     cardSection.prepend(cardElement);
-//   };
-
-// // initialCards.forEach((cardData) => {
-// //   renderNewCardElement(cardSection, cardData);
-// // });
-
-//   closePopup(addPopup)
-// }
-
-//---------------------------??????????????????
-// const renderInitialCardElement = cardElement => {
-//   // добавление карточки в дерево
-//   cardSection.append(cardElement)
-// }
-
-// initialCards.forEach(card => {
-//   // итерация по массиву карточек
-//   renderInitialCardElement(cardSection, card)
-// })
-//==================================================================================(())
-
-// // создаем функцию, которая на основе данных создает элемент
-// const createCardElement = cardData => {
-//   // Создать элемент карточки
-//   // cardData это объект с данными о карточке
-//   const cardElement = card.cloneNode(true)
-//   const cardName = cardElement.querySelector('.element__name')
-//   const cardPhoto = cardElement.querySelector('.element__photo')
-//   const likeButton = cardElement.querySelector('.element__like') // Лайк карточки
-//   const deleteButton = cardElement.querySelector('.element__delete') // Удаление карточки
-
-//   cardName.textContent = cardData.name
-//   cardPhoto.src = cardData.link
-//   cardPhoto.alt = cardData.name
-
-//   const handleCardLike = () => {
-//     // функция лайка
-//     if (likeButton.classList.contains('element__like_type_active')) {
-//       // проверяем содержит ли один элемент внутри себя другой
-//       likeButton.classList.remove('element__like_type_active')
-//     } else likeButton.classList.add('element__like_type_active')
-//   }
-//   likeButton.addEventListener('click', handleCardLike) // добавляю модификатор active при нажатии на лайк
-
-//   const handleCardDelete = () => {
-//     // функция удаления карточки
-//     cardElement.remove() // удаляет элемент из дерева
-//   }
-
-//   deleteButton.addEventListener('click', handleCardDelete)
-
-//   return cardElement
-// }
