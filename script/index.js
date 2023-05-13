@@ -55,7 +55,7 @@ function closePopupByPressingEsc (evt) {
 
 // ------------------------- Открытие попапа с картинкой ------------------
 
-export const openZoomedCardPhoto = (name, link) => {
+function handleCardClick (name, link) {
   openPopup(imgPopup)
   descriptionImgPopup.textContent = name
   fullImagePopup.src = link
@@ -67,6 +67,7 @@ editButton.addEventListener('click', () => {
   openPopup(editPopup)
   editPopupTitle.value = profileTitle.textContent // значение поля по умолчанию
   editPopupSubtitle.value = profileSubtitle.textContent //значение поля по умолчанию
+  // editPopupForm.reset()
 })
 
 function handleEditProfileFormSubmit (event) {
@@ -91,39 +92,40 @@ const urlInput = addPopupForm.querySelector('.popup__text-area_card_url')
 
 addButton.addEventListener('click', () => {
   openPopup(addPopup)
+  addPopupForm.reset()
 })
 
 // ---------------------- Добавление новой карточкии -------------------
+// Для создания новой карточки нужно сделать отдельную функцию createCard ,
+// чтобы разделить логику вставки: она будет возвращать готовую карточку с уже установленными обработчиками через return, а вставлять в DOM там не нужно.
 
-const renderNewCardElement = (cardSection, cardData) => {
-  // функция добавления новой карточки на страницу
-  const card = new Card(
-    cardData,
-    '.card-template',
-    '.card-template_type_default',
-    openZoomedCardPhoto
-  ) // создает экземпляр карточки
-  const cardElement = card.generateCard() // возвращает карточку на страницу с помощью generateCard
-  cardSection.prepend(cardElement)
+function createCard (cardData) {
+  const cardItem = new Card(cardData, '#card-template', handleCardClick)
+  renderCard(cardItem.generateCard())
+  return cardItem
 }
 
-initialCards.forEach(cardData => {
-  // карточки из массива initialCards
-  renderNewCardElement(cardSection, cardData)
-})
+function renderCard (cardItem) {
+  // Функция отрисовки карточки на странице
+  cardSection.prepend(cardItem) // cardSection - '.elements'
+}
+//-----------------------------------------------------------------------
 
 function handleCardSubmit (event) {
   // наполнение карточки данными
   event.preventDefault() // Эта строчка отменяет стандартную отправку формыы
-  const name = nameInput.value
-  const link = urlInput.value
-  closePopup(addPopup)
-
-  renderNewCardElement(cardSection, { name, link })
+  const cardData = {
+    name: nameInput.value,
+    link: urlInput.value
+  }
+  createCard(cardData)
   addPopupForm.reset()
+  closePopup(addPopup)
 }
 
 addPopupForm.addEventListener('submit', handleCardSubmit)
+
+initialCards.forEach(createCard)
 
 // ------------------------------ валидация -----------------------------------------
 

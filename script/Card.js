@@ -1,14 +1,12 @@
-import { openZoomedCardPhoto } from './index.js'
-
 //  класс Card  создаёт карточку с текстом и ссылкой на изображение
 export default class Card {
-  constructor (cardData, templateSelector) {
+  constructor (cardData, templateSelector, handleCardClick) {
     this._cardData = cardData
     this._name = cardData.name
     this._link = cardData.link
     this._alt = cardData.name
     this._templateSelector = templateSelector
-    this.openZoomedCardPhoto = openZoomedCardPhoto
+    this._handleCardClick = handleCardClick
   }
 
   _getTemplate () {
@@ -36,6 +34,8 @@ export default class Card {
   }
 
   _setEventListeners = () => {
+    this._likeButton = this._element.querySelector('.element__like')
+
     this._element
       .querySelector('.element__delete')
       .addEventListener('click', () => {
@@ -43,18 +43,16 @@ export default class Card {
         this._deleteCardElement()
       })
 
-    this._element
-      .querySelector('.element__like')
-      .addEventListener('click', () => {
-        // обработчик события клика по кнопке лайка
-        this._handleCardLike()
-      })
+    this._likeButton.addEventListener('click', () => {
+      // обработчик события клика по кнопке лайка
+      this._handleCardLike()
+    })
 
     this._element
       .querySelector('.element__photo')
       .addEventListener('click', () => {
-        // обработчик события клика по фотографии
-        this.openZoomedCardPhoto(this._name, this._link)
+        // обработчик события клика по картинке
+        this._handleCardClick(this._name, this._link)
       })
   }
 
@@ -64,18 +62,9 @@ export default class Card {
   }
   _handleCardLike = () => {
     // метод лайка
-    if (
-      this._element
-        .querySelector('.element__like')
-        .classList.contains('element__like_type_active')
-    ) {
+    if (this._likeButton.classList.contains('element__like_type_active')) {
       // проверяем содержит ли один элемент внутри себя другой
-      this._element
-        .querySelector('.element__like')
-        .classList.remove('element__like_type_active')
-    } else
-      this._element
-        .querySelector('.element__like')
-        .classList.add('element__like_type_active')
+      this._likeButton.classList.remove('element__like_type_active')
+    } else this._likeButton.classList.add('element__like_type_active')
   }
 }

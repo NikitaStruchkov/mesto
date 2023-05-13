@@ -16,6 +16,9 @@ export class FormValidator {
     this._inputErrorClass = config.inputErrorClass
     this._errorClass = config.errorClass
     this._formElement = formElement // элемент той формы, которая валидируется
+    this._submitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    )
   }
 
   _setInputValidState (inputElement, errorElement) {
@@ -45,27 +48,24 @@ export class FormValidator {
 
   _toggleButtonValidity () {
     // метод, который меняет отображение кнопки submit
-    const submitButton = this._formElement.querySelector(
-      this._submitButtonSelector
-    ) // -- '.popup__save'
     if (this._formElement.checkValidity()) {
       // если форма валидная
-      this._enableButton(submitButton) // включает кнопку
+      this._enableButton(this._submitButton) // включает кнопку
     } else {
-      this._disableButton(submitButton)
+      this._disableButton(this._submitButton)
     }
   }
 
-  _disableButton (submitButton) {
+  _disableButton () {
     // метод неактивной кнопки
-    submitButton.classList.add(this._inactiveButtonClass) // добавляет класс с _disabled   -- 'popup__save_disabled'
-    submitButton.setAttribute('disabled', true) // блокирует отправку
+    this._submitButton.classList.add(this._inactiveButtonClass) // добавляет класс с _disabled   -- 'popup__save_disabled'
+    this._submitButton.setAttribute('disabled', true) // блокирует отправку
   }
 
-  _enableButton (submitButton) {
+  _enableButton () {
     // метод активной кнопки
-    submitButton.removeAttribute('disabled') // убирает класс с _disabled
-    submitButton.classList.remove(this._inactiveButtonClass) // активирует кнопку -- 'popup__save_disabled'
+    this._submitButton.removeAttribute('disabled') // убирает класс с _disabled
+    this._submitButton.classList.remove(this._inactiveButtonClass) // активирует кнопку -- 'popup__save_disabled'
   }
 
   _setEventListeners () {
@@ -83,16 +83,13 @@ export class FormValidator {
 
   enableValidation () {
     // публичный метод
-    // включение валидации всех форм
-    const formList = Array.from(document.querySelectorAll(this._formSelector))
-    formList.forEach(formElement => {
-      formElement.addEventListener('submit', event => {
-        event.preventDefault() // отменяет стандартную отправку формы.
-        formElement.reset()
-        this._toggleButtonValidity() // деактивиует кнопку сабмита после очередного добавления новой карточки
-      })
-
-      this._setEventListeners()
+    // включение валидации форм
+    this._formElement.addEventListener('submit', event => {
+      event.preventDefault() // отменяет стандартную отправку формы.
+      //
+      this._toggleButtonValidity() // деактивиует кнопку сабмита после очередного добавления новой карточки
     })
+
+    this._setEventListeners()
   }
 }
