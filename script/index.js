@@ -1,6 +1,11 @@
 import { initialCards } from './cards.js'
 import Card from './Card.js'
 import { FormValidator, config } from './FormValidator.js'
+import Section from './Section.js'
+import Popup from './Popup.js'
+// import PopupWithForm from './PopupWithForm.js'  
+// import PopupWithImage from './PopupWithImage.js'
+import UserInfo from './UserInfo.js'
 
 const editButton = document.querySelector('.profile__edit-button')
 const profileTitle = document.querySelector('.profile__title')
@@ -11,18 +16,18 @@ const editPopupSubtitle = editPopup.querySelector('.popup__text-area_input_job')
 const editPopupForm = editPopup.querySelector('.popup__content_type_edit')
 const cardSection = document.querySelector('.elements')
 const imgPopup = document.querySelector('.popup_type_full-img')
-const fullImagePopup = imgPopup.querySelector('.popup__image')
-const descriptionImgPopup = imgPopup.querySelector('.popup__description')
+const fullImagePopup = imgPopup.querySelector('.popup__image') // УДАЛИТЬ
+const descriptionImgPopup = imgPopup.querySelector('.popup__description') // УДАЛИТЬ
 
 // ---------------------- Функции открытия/закрытия попапов -------------------
 
-const openPopup = popup => {
+const openPopup = popup => { // УДАЛИТЬ
   // функция, которая открывает popup-ы
   popup.classList.add('popup_opened')
   document.addEventListener('keydown', closePopupByPressingEsc) // добавляет слушатель закрытия попапа нажатием на Esc
 }
 
-const closePopup = popup => {
+const closePopup = popup => { // УДАЛИТЬ
   // функция, которая закрывает popup-ы
   popup.classList.remove('popup_opened')
   document.removeEventListener('keydown', closePopupByPressingEsc) // удялет слушатель закрытия попапа нажатием на Esc
@@ -30,7 +35,7 @@ const closePopup = popup => {
 
 // ----------------------  Закрытие попапа кликом на оверлей -------------------
 
-const popups = document.querySelectorAll('.popup') // все попапы
+const popups = document.querySelectorAll('.popup') // все попапы  // УДАЛИТЬ
 // объединияем  обработчики оверлея и крестиков:
 popups.forEach(popup => {
   popup.addEventListener('mousedown', evt => {
@@ -46,7 +51,7 @@ popups.forEach(popup => {
 
 // ----------------------  Закрытие попапа нажатием на Esc -------------------
 
-function closePopupByPressingEsc (evt) {
+function closePopupByPressingEsc (evt) { // УДАЛИТЬ
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened') // находит открытый попап
     closePopup(openedPopup) // закрывает попап с помощью функции closePopup
@@ -55,12 +60,15 @@ function closePopupByPressingEsc (evt) {
 
 // ------------------------- Открытие попапа с картинкой ------------------
 
-function handleCardClick (name, link) {
+function handleCardClick (name, link) {  // УДАЛИТЬ
   openPopup(imgPopup)
   descriptionImgPopup.textContent = name
   fullImagePopup.src = link
   fullImagePopup.alt = name
 }
+
+
+
 // ---------------------- Форма редактирования профиля -------------------
 
 editButton.addEventListener('click', () => {
@@ -125,7 +133,7 @@ function handleCardSubmit (event) {
 
 addPopupForm.addEventListener('submit', handleCardSubmit)
 
-initialCards.forEach(createCard)
+// initialCards.forEach(createCard)  // УДАЛИТЬ!
 
 // ------------------------------ валидация -----------------------------------------
 
@@ -134,6 +142,27 @@ const addPopupFormValidator = new FormValidator(config, addPopupForm) // экз�
 
 editPopupFormValidator.enableValidation(config)
 addPopupFormValidator.enableValidation(config)
+
+
+// -------------------------------- new class ------------------------------------
+
+const section = new Section({items: initialCards, renderer: createCard}, '.elements')
+section.renderItems()
+
+//----------------------------------------------------------------------------------
+
+// const editPopupFormclass = new PopupWithForm({
+//   popupSelector: '.popup_type_edit-form', 
+//   handleFormSubmit: (event) => {
+//     event.preventDefault() // Эта строчка отменяет стандартную отправку формы.
+//     const name = editPopupTitle.value
+//     const job = editPopupSubtitle.value
+
+//     profileTitle.textContent = name // меняем имя в профиле
+//     profileSubtitle.textContent = job
+//     // closePopup(editPopup) // закрываем попап сразу после submit-а
+//   }
+// })
 
 // ---------------------- export -------------------
 export { editPopupForm }
