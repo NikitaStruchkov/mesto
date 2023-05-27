@@ -46,7 +46,7 @@ export class FormValidator {
     }
   }
 
-  _toggleButtonValidity () {
+  toggleButtonValidity () {
     // метод, который меняет отображение кнопки submit
     if (this._formElement.checkValidity()) {
       // если форма валидная
@@ -76,7 +76,7 @@ export class FormValidator {
     inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement)
-        this._toggleButtonValidity() // деактивиует кнопку сабмита, если импуты не были отредактированы
+        this.toggleButtonValidity() // деактивиует кнопку сабмита, если импуты не были отредактированы
       })
     })
   }
@@ -86,8 +86,7 @@ export class FormValidator {
     // включение валидации форм
     this._formElement.addEventListener('submit', event => {
       event.preventDefault() // отменяет стандартную отправку формы.
-      //
-      this._toggleButtonValidity() // деактивиует кнопку сабмита после очередного добавления новой карточки
+      this.toggleButtonValidity() // деактивиует кнопку сабмита после очередного добавления новой карточки
     })
 
     this._setEventListeners()
