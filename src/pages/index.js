@@ -6,6 +6,8 @@ import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import UserInfo from '../components/UserInfo.js'
 
+import '../pages/index.css'
+
 const editButton = document.querySelector('.profile__edit-button')
 const profileTitle = document.querySelector('.profile__title')
 const profileSubtitle = document.querySelector('.profile__subtitle')
