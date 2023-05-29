@@ -24,10 +24,11 @@ export default class Card {
     // Запишем разметку в приватное поле _element.
     // Так у других элементов появится доступ к ней.
     this._element = this._getTemplate()
+    this._photo = this._element.querySelector('.element__photo')
     this._setEventListeners() // обработчики
     // данные
-    this._element.querySelector('.element__photo').src = this._link
-    this._element.querySelector('.element__photo').alt = this._alt
+    this._photo.src = this._link
+    this._photo.alt = this._alt
     this._element.querySelector('.element__name').textContent = this._name
 
     return this._element

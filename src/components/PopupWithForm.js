@@ -7,11 +7,17 @@ export default class PopupWithForm extends Popup {
     this._popupForm = this._popup.querySelector('.popup__content')
   }
 
-  _getInputValues () {
-    // собирает данные всех полей формы.
+  _getInputValues() {  // собирает данные всех полей формы.
     // достаём все элементы полей
-    this._inputList = this._popup.querySelectorAll('.popup__text-area')
-    return this._inputList.forEach(inputElement => inputElement.value)
+    this._inputList = this._popup.querySelectorAll('.popup__text-area');
+    // создаём пустой объект
+    this._formValues = {};
+    // добавляем в этот объект значения всех полей
+    this._inputList.forEach(input => {
+      this._formValues[input.name] = input.value;
+    });
+    // возвращаем объект значений
+    return this._formValues;
   }
 
   setEventListeners () {
@@ -25,9 +31,9 @@ export default class PopupWithForm extends Popup {
     })
   }
 
-  closePopup () {
+  close () {
     // метод отвечают за закрытие попапа.
-    super.closePopup()
+    super.close()
     this._popupForm.reset() // при закрытии попапа форма должна  сбрасываться.
   }
 }

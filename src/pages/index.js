@@ -1,4 +1,4 @@
-import { initialCards } from '../components/cards.js'
+import { initialCards } from '../utils/cards.js'
 import Card from '../components/Card.js'
 import { FormValidator, config } from '../components/FormValidator.js'
 import Section from '../components/Section.js'
@@ -25,23 +25,23 @@ const urlInput = addPopupForm.querySelector('.popup__text-area_card_url')
 // ------------------------- Открытие попапа с картинкой ------------------
 
 function handleCardClick (name, link) {
-  popupWithImage.openPopup(name, link)
+  popupWithImage.open(name, link)
 }
 
 // ---------------------- Форма редактирования профиля -------------------
 
 editButton.addEventListener('click', () => {
-  editPopupWithForm.openPopup(editPopup)
+  editPopupWithForm.open()
   userInfo.getUserInfo()
-  editPopupTitle.value = profileTitle.textContent // значение поля по умолчанию
-  editPopupSubtitle.value = profileSubtitle.textContent //значение поля по умолчанию
+  editPopupTitle.value =  userInfo.getUserInfo().name //  значение поля по умолчанию
+  editPopupSubtitle.value = userInfo.getUserInfo().about //значение поля по умолчанию
   // editPopupForm.reset()
 })
 
 // ---------------------- Форма добавления карточки -------------------
 
 addButton.addEventListener('click', () => {
-  addPopupWithForm.openPopup(addPopup)
+  addPopupWithForm.open()
   addPopupForm.reset()
 })
 
@@ -75,11 +75,11 @@ popupWithImage.setEventListeners()
 
 const editPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_edit-form',
-  handleFormSubmit: () => {
-    const name = editPopupTitle.value
-    const job = editPopupSubtitle.value
-    userInfo.setUserInfo(name, job)
-    editPopupWithForm.closePopup(editPopup) // закрываем попап сразу после submit-а
+  handleFormSubmit: (formData) => {
+    formData.name = editPopupTitle.value
+    formData.job = editPopupSubtitle.value
+    userInfo.setUserInfo(formData.name, formData.job)
+    editPopupWithForm.close() // закрываем попап сразу после submit-а
   }
 })
 
@@ -87,15 +87,13 @@ editPopupWithForm.setEventListeners()
 
 const addPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_add-form',
-  handleFormSubmit: () => {
-    const cardData = {
-      name: nameInput.value,
-      link: urlInput.value
-    }
-    createCard(cardData)
+  handleFormSubmit: (formData) => {
+    formData.name = nameInput.value,
+    formData.link = urlInput.value,
+    createCard(formData)
     addPopupForm.reset()
     addPopupFormValidator.toggleButtonValidity()
-    addPopupWithForm.closePopup(addPopup)
+    addPopupWithForm.close()
   }
 })
 
