@@ -29,10 +29,10 @@ export default class Popup {
       this._popup.addEventListener('mousedown', evt => {
         if (evt.target.classList.contains('popup_opened')) {
           // Метод contains позволяет проверить, содержит ли один элемент внутри себя другой.
-          this.close(this._popup)
+          this.close()
         }
         if (evt.target.classList.contains('popup__close')) {
-          this.close(this._popup)
+          this.close()
         }
       })
   }

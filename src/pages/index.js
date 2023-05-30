@@ -76,9 +76,9 @@ popupWithImage.setEventListeners()
 const editPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_edit-form',
   handleFormSubmit: (formData) => {
-    formData.name = editPopupTitle.value
-    formData.job = editPopupSubtitle.value
-    userInfo.setUserInfo(formData.name, formData.job)
+    formData['profile-name'],
+    formData['profile-job'],
+    userInfo.setUserInfo(formData['profile-name'], formData['profile-job'])
     editPopupWithForm.close() // закрываем попап сразу после submit-а
   }
 })
@@ -88,8 +88,8 @@ editPopupWithForm.setEventListeners()
 const addPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_add-form',
   handleFormSubmit: (formData) => {
-    formData.name = nameInput.value,
-    formData.link = urlInput.value,
+    formData['name']  = nameInput.value,
+    formData['link']  = urlInput.value,
     createCard(formData)
     addPopupForm.reset()
     addPopupFormValidator.toggleButtonValidity()
