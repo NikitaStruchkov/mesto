@@ -10,7 +10,7 @@ export default class Section {
     this._items.forEach(item => {
       this._renderer(item)
     })
-  }
+  } 
 
   addItem (itemHtml) {
     // метод принимает DOM-элемент и добавляет его в контейнер.

@@ -10,14 +10,11 @@
   background-position: center;
   height: 19px;
   width: 22px;
-  margin: auto 20px auto 0;
-  -ms-flex-negative: 0;
+  margin: auto;
   flex-shrink: 0;
 }
 
 .element__like:hover {
   opacity: 0.5;
-  -webkit-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }

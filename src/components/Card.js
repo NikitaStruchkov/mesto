@@ -1,12 +1,16 @@
 //  класс Card  создаёт карточку с текстом и ссылкой на изображение
 export default class Card {
-  constructor (cardData, templateSelector, handleCardClick) {
+  constructor (cardData, templateSelector, handleCardClick, api, userId) {
     this._cardData = cardData
     this._name = cardData.name
     this._link = cardData.link
     this._alt = cardData.name
     this._templateSelector = templateSelector
     this._handleCardClick = handleCardClick
+    this._id = cardData.id
+    this._api = api
+    this._userId = userId;
+    
   }
 
   _getTemplate () {
@@ -60,12 +64,28 @@ export default class Card {
   _deleteCardElement = () => {
     // метод удаления карточки
     this._element.remove()
+
   }
+
   _handleCardLike = () => {
     // метод лайка
     if (this._likeButton.classList.contains('element__like_type_active')) {
       // проверяем содержит ли один элемент внутри себя другой
       this._likeButton.classList.remove('element__like_type_active')
     } else this._likeButton.classList.add('element__like_type_active')
+  }
+
+
+  displayLikesQuantity (card) {
+    this.likesQuantity = this._templateSelector.querySelector('.element__likes-quantity')
+    debugger
+    this._likesArray = card.likes;
+    if (this._likesArray.length === 0) {
+      this.likesQuantity.textContent = '';
+    } else {
+      // Брать количество лайков из ответа сервера
+      this.likesQuantity.textContent = this._likeArea.length;
+    }
+   this._handleCardLike()
   }
 }
