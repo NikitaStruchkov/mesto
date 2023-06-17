@@ -5,19 +5,21 @@ export default class PopupWithForm extends Popup {
     super(popupSelector)
     this._handleFormSubmit = handleFormSubmit
     this._popupForm = this._popup.querySelector('.popup__content')
+    this._submitButton = this._popup.querySelector('.popup__save')
   }
 
-  _getInputValues() {  // собирает данные всех полей формы.
+  _getInputValues () {
+    // собирает данные всех полей формы.
     // достаём все элементы полей
-    this._inputList = this._popup.querySelectorAll('.popup__text-area');
+    this._inputList = this._popup.querySelectorAll('.popup__text-area')
     // создаём пустой объект
-    this._formValues = {};
+    this._formValues = {}
     // добавляем в этот объект значения всех полей
     this._inputList.forEach(input => {
-      this._formValues[input.name] = input.value;
-    });
+      this._formValues[input.name] = input.value
+    })
     // возвращаем объект значений
-    return this._formValues;
+    return this._formValues
   }
 
   setEventListeners () {
@@ -29,6 +31,11 @@ export default class PopupWithForm extends Popup {
       // передадим ей объект — результат работы _getInputValues
       this._handleFormSubmit(this._getInputValues())
     })
+  }
+
+  changeButtonText (text) {
+    // изменеие кнопок сабмита Сохранение
+    this._submitButton.textContent = text
   }
 
   close () {

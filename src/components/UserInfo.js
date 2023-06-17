@@ -1,9 +1,10 @@
 export default class UserInfo {
   // Класс UserInfo отвечает за управление отображением информации о пользователе на странице.
   constructor ({ name, about, avatar }) {
-    this._name = name // Принимает в конструктор объект с селекторами двух элементов: элемента имени пользователя и элемента информации о себе.
+    this._name = name
     this._about = about
-    this._avatar = document.querySelector('.profile__avatar') 
+    this._avatar = avatar
+    // this._avatar = document.querySelector('.profile__avatar')
   }
 
   getUserInfo () {
@@ -19,7 +20,8 @@ export default class UserInfo {
     this._about.textContent = about
   }
 
-  setUserAvatar(avatar) {
-    this._avatar.src = avatar;
+  setUserAvatar (data) {
+    // 9. Обновление аватара пользователя
+    this._avatar.src = data.avatar
   }
 }
