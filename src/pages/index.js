@@ -38,33 +38,31 @@ const api = new Api({
   }
 })
 
-// 1. Загрузка информации о пользователе с сервера
-api.getUserInfo().then(users => {
-  userId = users._id
-  userInfo.setUserInfo({ name: users.name, about: users.about })
-  userInfo.setUserAvatar(users)
-})
+const section = new Section(
+  {
+    items: [], // cards,
+    renderer: card =>
+      createCard({
+        name: card.name,
+        link: card.link,
+        likes: card.likes,
+        owner: card.owner,
+        cardId: card._id
+      })
+  },
+  '.elements'
+)
 
-// 2. Загрузка карточек с сервера
-api
-  .getInitialCards()
-  .then(cards => {
-    const section = new Section(
-      {
-        items: cards,
-        renderer: card =>
-          createCard({
-            name: card.name,
-            link: card.link,
-            likes: card.likes,
-            owner: card.owner,
-            cardId: card._id
-          })
-      },
-      '.elements'
-    )
+// Для отрисовки страницы только после получения всех данных
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  // 1. Загрузка информации о пользователе с сервера
+  // 2. Загрузка карточек с сервера
+  .then(([users, cards]) => {
+    userId = users._id
+    userInfo.setUserInfo({ name: users.name, about: users.about })
+    userInfo.setUserAvatar(users)
 
-    section.renderItems()
+    section.renderItems(cards)
   })
   .catch(err => console.log(`Ошибка.....: ${err}`))
 
@@ -81,6 +79,7 @@ editButton.addEventListener('click', () => {
 
 addButton.addEventListener('click', () => {
   addPopupWithForm.open()
+  addPopupFormValidator.toggleButtonValidity()
   addPopupForm.reset()
 })
 
@@ -88,6 +87,7 @@ addButton.addEventListener('click', () => {
 
 changeAvatarButton.addEventListener('click', () => {
   popupChangeAvatarForm.open()
+  changeAvatarValidator.toggleButtonValidity() //  При пустом поле ввода, кнопка сохранения отключена.
 })
 // ---------------------- Добавление новой карточки -------------------
 
@@ -135,17 +135,17 @@ popupWithImage.setEventListeners()
 const editPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_edit-form',
   handleFormSubmit: formData => {
+    editPopupWithForm.changeButtonText('Сохранение...')
     api
       .sendUserInfo(formData)
       .then(res => {
         // 3. Редактирование профиля
         userInfo.setUserInfo({ name: res.name, about: res.about })
-        editPopupWithForm.changeButtonText('Сохранение...')
         editPopupWithForm.close() // закрываем попап сразу после submit-а
       })
       .catch(err => console.log(`Ошибка.....: ${err}`))
       .finally(() => {
-        popupChangeAvatarForm.changeButtonText('Сохранить')
+        editPopupWithForm.changeButtonText('Сохранить')
       })
   }
 })
@@ -155,6 +155,7 @@ editPopupWithForm.setEventListeners()
 const addPopupWithForm = new PopupWithForm({
   popupSelector: '.popup_type_add-form',
   handleFormSubmit: formData => {
+    addPopupWithForm.changeButtonText('Сохранение...')
     api
       .addNewCard({ name: formData.name, link: formData.link })
       .then(res => {
@@ -166,14 +167,11 @@ const addPopupWithForm = new PopupWithForm({
           owner: res.owner,
           cardId: res._id
         })
-        addPopupForm.reset()
-        addPopupFormValidator.toggleButtonValidity()
-        addPopupWithForm.changeButtonText('Сохранение...')
         addPopupWithForm.close()
       })
       .catch(err => console.log(`Ошибка.....: ${err}`))
       .finally(() => {
-        popupChangeAvatarForm.changeButtonText('Создать')
+        addPopupWithForm.changeButtonText('Создать')
       })
   }
 })

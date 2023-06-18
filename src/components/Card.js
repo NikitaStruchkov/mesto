@@ -75,7 +75,7 @@ export default class Card {
     this.setLikes(this._likes)
     if (this._userId !== this._ownerId) {
       // иконка удаления только на созданных пользователем карточках
-      this._deleteButton.style.display = 'none'
+      this._deleteButton.remove()
     }
     return this._element
   }
