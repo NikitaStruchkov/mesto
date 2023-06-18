@@ -5,7 +5,7 @@
 **Технологии**
 
 ##### HTML, CSS и JavaScript.
-
+- API
 - валидация форм 
 - flex-box
 - grid layout
